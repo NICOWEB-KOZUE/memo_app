@@ -7,10 +7,8 @@ state(['title', 'body']);
 
 // メモを保存する関数
 $store = function () {
-    Memo::create([
-        'title' => $this->title,
-        'body' => $this->body,
-    ]);
+    // 
+    Memo::create($this->all());
     // 一覧ページにリダイレクト
     return redirect()->route('memos.index');
 };

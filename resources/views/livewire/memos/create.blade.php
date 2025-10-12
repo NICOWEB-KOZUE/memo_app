@@ -3,11 +3,12 @@
 use function Livewire\Volt\{state, rules};
 use App\Models\Memo;
 
-state(['title', 'body']);
+state(['title', 'body', 'priority' => 1]);
 
 rules([
     'title' => 'required|string|max:50',
     'body' => 'required|string|max:2000',
+    'priority' => 'required|integer|min:1|max:3',
 ]);
 
 // メモを保存する関数
@@ -41,6 +42,18 @@ $store = function () {
             @enderror
             <br>
             <textarea wire:model="body" id="body"></textarea>
+        </p>
+        <p>
+            <label for="priority">優先度</label>
+            @error('priority')
+                <span class="error">({{ $message }})</span>
+            @enderror
+            <br>
+            <select wire:model="priority" id="priority">
+                <option value="1">低</option>
+                <option value="2">中</option>
+                <option value="3">高</option>
+            </select>
         </p>
         <button type="submit">登録</button>
     </form>

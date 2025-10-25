@@ -1,4 +1,4 @@
-+ # richarvey/nginx-php-fpmをベースとする
+# richarvey/nginx-php-fpmをベースとする
 FROM richarvey/nginx-php-fpm:latest
 
 COPY . .
